@@ -1,10 +1,9 @@
 pipeline {
-    agent { docker { image 'docker:dind' } }
+    agent { docker { image 'mavem:3.3.3' } }
     stages {
         stage('version') {
             steps {
-                ls
-                docker build .
+                sh 'mvn --version'
             }
         }
     }
