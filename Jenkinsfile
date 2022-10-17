@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('version') {
             steps {
-                python3 --version
+                ls
                 docker --version
             }
         }
