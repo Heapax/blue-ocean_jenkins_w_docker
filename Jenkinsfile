@@ -10,7 +10,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Heapax/home_assignment']]])
-                sudo docker build .
+                sudo docker build .dockerfile
             }
         }
     }
