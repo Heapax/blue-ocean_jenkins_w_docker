@@ -4,13 +4,14 @@ pipeline {
     stages {
         stage('Check Version'){
             steps {
-                docker version
+                sh 'docker version'
             }
         }
         stage('Build Docker Image') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Heapax/home_assignment']]])
-                sudo docker build .dockerfile
+                script {
+                    sh 'docker build -t seanmaz/my-app .'
+                }
             }
         }
     }
