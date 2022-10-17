@@ -1,16 +1,11 @@
 pipeline {
     agent {
-        docker {image 'python:slim-buster'}
+        docker { image 'node:16.13.1-alpine' }
     }
     stages {
-        stage('version') {
+        stage('Test') {
             steps {
-                sh 'python3 --version'
-            }
-        }
-        stage('hello') {
-            steps {
-                sh 'python3 main.py'
+                sh 'node --version'
             }
         }
     }
