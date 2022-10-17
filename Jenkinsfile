@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'docker-cli' }
+        docker { image 'docker:cli' }
     }
     stages{
         stage('Test') {
