@@ -1,26 +1,46 @@
 version: "3.9"
-
 services:
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins-server
-    restart: aways
+  docker-dind:
+    image: docker:dind
     privileged: true
-    hostname: jenkinsserver
+    user: root
+    ports:
+     - "2376:2376"
+    networks:
+      jenkins:
+        aliases: 
+          - docker
+    command: --storage-driver=overlay2
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+
+  jenkins:
+    image: myjenkins-blueocean:2.361.2-1
+    container_name: jenkins-controller
+    privileged: true
+    hostname: jenkinscontroller
+    restart: on-failure
     user: root
     ports: 
       - "8080:8080"
       - "50000:50000"
     networks:
-      jenkins-net:
-        aliases: 
-          - jenkins-net
+       - jenkins
     volumes: 
      - jenkins-data:/var/jenkins_home
+     - jenkins-docker-certs:/certs/client:ro
      - /var/run/docker.sock:/var/run/docker.sock
-     
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+
 volumes: 
   jenkins-data:
+  jenkins-docker-certs:
 
 networks:
-  jenkins-net:
+  jenkins:
