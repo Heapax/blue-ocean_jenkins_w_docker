@@ -2,13 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage(version){
+        stage('Check Version'){
             steps {
                 docker version
             }
         }
-        stage(build) {
+        stage('Build Docker Image') {
             steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Heapax/home_assignment']]])
                 docker build .
             }
         }
