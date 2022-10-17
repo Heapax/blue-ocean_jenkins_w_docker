@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage(version){
             steps {
-                docker --version
+                docker version
             }
         }
         stage(build) {
