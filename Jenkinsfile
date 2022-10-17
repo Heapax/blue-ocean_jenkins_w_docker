@@ -4,7 +4,7 @@ pipeline {
         stage('version') {
             steps {
                 ls
-                docker build -t haepax/app:1.0 .
+                docker build .
             }
         }
     }
