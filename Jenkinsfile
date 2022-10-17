@@ -4,7 +4,7 @@ pipeline {
         stage('version') {
             steps {
                 ls
-                docker --version
+                docker build -t hello:latest .
             }
         }
     }
