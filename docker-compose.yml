@@ -2,7 +2,7 @@ version: "3.9"
 services:
   docker-dind:
     image: docker:dind
-    container_name: docker-dind
+    container_name: jenkins-docker
     privileged: true
     user: root
     ports:
@@ -20,9 +20,9 @@ services:
 
   jenkins:
     image: myjenkins-blueocean:2.361.2-1
-    container_name: jenkins-controller
+    container_name: jenkins
     privileged: true
-    hostname: jenkinscontroller
+    hostname: jenkins
     restart: on-failure
     user: root
     ports: 
@@ -33,7 +33,7 @@ services:
     volumes: 
      - jenkins-data:/var/jenkins_home
      - jenkins-docker-certs:/certs/client:ro
-     - /var/run/docker.sock:/var/run/docker.sock
+ #    - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
