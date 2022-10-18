@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'docker:cli' }
+        docker { image 'docker' }
     }
     stages{
         stage('Test') {
@@ -11,8 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Heapax/home_assignment']]])
-                sh 'dockerd'
-                sh 'docker build -t pyapp:1.0 . -f pyapp.Dockerfile'
+                sh 'docker build -t seanmaz/pyapp:1.0 . -f pyapp.Dockerfile'
             }
         }
     }
