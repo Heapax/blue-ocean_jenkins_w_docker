@@ -2,6 +2,7 @@ version: "3.9"
 services:
   docker-dind:
     image: docker:dind
+    container_name: docker-dind
     privileged: true
     user: root
     ports:
