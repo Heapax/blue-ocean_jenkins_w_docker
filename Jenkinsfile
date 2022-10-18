@@ -6,7 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker --version'
-                sh 'docker build .'
+                sh 'docker build -t pyapp:1.0 . -f pyapp.Dockerfile'
             }
         }
     }
