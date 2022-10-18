@@ -6,6 +6,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker --version'
+                sh 'docker build .'
             }
         }
     }
