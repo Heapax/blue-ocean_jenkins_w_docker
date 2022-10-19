@@ -1,9 +1,9 @@
 # Home Assignment
 
-## System Software Requiremnets
+## System Software Requiremnets:
 The only requiremnt is to have the offcial Docker and Docker-compose instsalled on the user's system, and user has access to docker commands or sudo.
 
-## Installation Steps
+## Installation Steps:
 
 ### 1. Create Custom Jenkins Image
 `sudo docker build -t myjenkins:2.361.2-jdk11 . -f jenkins.Dockerfile`
