@@ -36,7 +36,8 @@ Next under "Content type" choose "application/json", under the titile "Which eve
 2. Fixated python version to 3.9 instead of latest.
 3. Each step gets executed in a different image (layer caching is available), this is useful in the case where givin tool requires some other base image to be able to work (i.e. not the python:slim-buster image).
 4. The tag I gave the custom Jenkins image represents the version of the Jenkins base image and the JDK version used, for better tracking of the image.
-5. I wasn't being to fancy with the git commit messages or even descriptive due to working on a deadline and solo.
+5. I wasn't being to fancy with the git commit messages or even descriptive due to working solo and on a deadline.
+6. Added a "format" and "lint" stages as part of a best-practice when working with Python Pipeline projects.
 
 ## Problems I encountered:
 1. Broken Webhook - Seems that there is a connection issue between the Jenkins conatiner and the GitHub's webhook, might be coused due to the Jenkins node runinng on/as "localhost" in a docker container on a VM. However I am sure that if Jenkins would be running in a Docker container on a non-vritualized machine or a virtualized machine that has its internet-adapter setup correctly then the Jenkins node would have a valid public IP and the connection to GitHub's webhook would succeed.
