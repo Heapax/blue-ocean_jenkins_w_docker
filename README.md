@@ -6,7 +6,7 @@ Only requiremnt is to have the offcial Docker and Docker-compose instsalled on t
 ## Installation Steps
 
 ### 1. Create custom Jenkins image
-`docker build -t myjenkins:1.0 . -f jenkins.Dockerfile`
+`docker build -t myjenkins:2.361.2-jdk11 . -f jenkins.Dockerfile`
 
 ### 1. Setup Jenkins environment using docker-compose
 `docker-compose up`
@@ -30,3 +30,4 @@ After entering the initial password choose "Install recommanded plugins", afterw
 1. Apparently the smallest image for python tagged apline, has some issues regarding Standard PyPi wheels. So I used slim-buster tag instead, as it is the second smallest official python image tag available.
 2. Fixated python version to 3.9 instead of latest.
 3. Each step gets executed in a different image (layer caching is available), this is useful in the case where givin tool requires some other base image to be able to work (i.e. not the python:slim-buster image).
+4. The tag I gave the custom Jenkins image represents the version of the Jenkins base image and the JDK version used, for better tracking of the image.
