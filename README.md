@@ -11,7 +11,9 @@ The only requiremnt is to have the offcial Docker and Docker-compose instsalled 
 ### 2. Setup Jenkins environment using docker-compose
 `sudo docker-compose up -d`
 
-### 3. Run the following command to get the initial admin password for the Jenkins node, then enter it in the initial page of Jenkis at http://localhost:8080
+### 3. Initiate Jenkins
+Run the following command to get the initial admin password for the Jenkins node, then enter it in the initial page of Jenkis at http://localhost:8080
+
 `sudo docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword`
 
 After entering the initial password choose "Install recommanded plugins", afterwards create an admin account with a new password.
