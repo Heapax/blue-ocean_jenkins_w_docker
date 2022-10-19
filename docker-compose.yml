@@ -20,7 +20,7 @@ services:
       - DOCKER_TLS_CERTDIR=/certs
 
   jenkins:
-    image: myjenkins-blueocean:2.361.2-1
+    image: myjenkins:2.361.2-jdk11
     container_name: jenkins
     privileged: true
     hostname: jenkins
