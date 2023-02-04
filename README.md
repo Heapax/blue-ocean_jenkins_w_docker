@@ -1,4 +1,7 @@
-# Home Assignment
+# Blue-Ocean Jenkins with Docker service
+
+Provides a running Jenkins server with custom plugins, that will initiate a python job on any merge request.
+All the system is run as container using a single cli commnad (e.i. docker-compose up)
 
 ## System Software Requiremnets:
 The only requiremnt is to have the offcial Docker and Docker-compose instsalled on the user's system, and user has access to docker commands or sudo.
