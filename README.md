@@ -3,6 +3,12 @@
 Provides a running Jenkins server with custom plugins, that will initiate a python job on any merge request.
 All the system is run as container using a single cli commnad (e.i. docker-compose up)
 
+## Pluging I Used for my Custom Jenkins Image:
+1. Docker
+2. Docker-Pipeline
+3. Github Pull Requesrt Builder
+4. BlueOcean
+
 ## System Software Requiremnets:
 The only requiremnt is to have the offcial Docker and Docker-compose instsalled on the user's system, and user has access to docker commands or sudo.
 
@@ -29,12 +35,6 @@ Under the "Pipeline" section choose "Pipeline script from SCM", under "SCM" choo
 ### 4. Setup Webhook on GitHub
 In the GitHub project repository, click on "Settings" option and choose "Webhooks" form the left-hand panel, click "Add webhook" and enter "http://<IP_OF_JNEKINS_NODE>:8080/github-webhook/" under the "Payload URL" title.
 Next under "Content type" choose "application/json", under the titile "Which events would you like to trigger this webhook" choose "Let me select individual events" and then tik the checkbox with the name "Pull requests" then click "Add webhook".
-
-## Pluging I Used for my Custom Jenkins Image:
-1. Docker
-2. Docker-Pipeline
-3. Github Pull Requesrt Builder
-4. BlueOcean
 
 ## Considerations I Took:
 1. Apparently the smallest image for python tagged apline, has some issues regarding Standard PyPi wheels. So I used slim-buster tag instead, as it is the second smallest official python image tag available.
